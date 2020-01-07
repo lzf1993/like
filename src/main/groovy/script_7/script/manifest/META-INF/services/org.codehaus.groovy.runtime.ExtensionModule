@@ -1,0 +1,4 @@
+moduleName=myFile
+moduleVersion=1.0
+//extensionClasses=script_7.script.TestFile_7
+staticExtensionClasses=script_7.script.TestFile_7
