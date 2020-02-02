@@ -34,12 +34,13 @@ class AnnationAST implements ASTTransformation{
         //遍历
         methodNodes.each {
             MethodNode node ->
-                //创建代码： def start = System.nanoTime()
+                //创建代码： def start = System.nanoTime()，因为要插在开头
                 def startStatement = new AstBuilder().buildFromCode {
                     def start = System.nanoTime()
                 }
-                //创建代码：def use = System.nanoTime()-start / println("use:${use/1.0e9}")
+                //创建代码：def use = System.nanoTime()-start / println("use:${use/1.0e9}") 因为要插在结尾
                 def endStatement = new AstBuilder().buildFromCode {
+                    def start = System.nanoTime()
                     def use = System.nanoTime()-start
                     println("use:${use/1.0e9}")
                 }

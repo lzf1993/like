@@ -74,7 +74,7 @@ class InjectAST implements ASTTransformation{
 
             //方式4、
             //methods4 是一个 BlockStatement对象数组 ： 方法注入, 原来的不清除，则调用原来的方法后，会调用我的代码
-            //输出 msg test code
+            //输出 msg test code, 直接添加代码
             def methods4 = new AstBuilder().buildFromCode {
                 println("test")
                 println("code")

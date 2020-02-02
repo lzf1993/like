@@ -1,8 +1,10 @@
 package dynamic_class_11
 
-//1、运行时，自定义生成一个类
+//############## 动态类 ##############
 
-// 键值对，属性名：属性值  方法名：方法值
+//1、运行时，自定义生成一个类， 使用 Expando
+
+// 键值对 ==> 属性名：属性值  方法名：方法值
 def expando = new Expando(name:'hello', fun1:{
    println "fun1"
 })

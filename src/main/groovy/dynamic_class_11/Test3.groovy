@@ -1,6 +1,6 @@
 package dynamic_class_11
 
-//方法委托
+//############## 方法委托 ##############
 
 class Work1{
     def execute1(){
@@ -23,6 +23,7 @@ class WorkManger{
     //可以通过 methodMissing 实现 直接 wm.execute1()
     def methodMissing(String name, def args) {
         WorkManger wm = this
+        //如果是 work1的方法
         if(work1.respondsTo(name,args)){
             //注入改方法
             wm.metaClass."$name" = {

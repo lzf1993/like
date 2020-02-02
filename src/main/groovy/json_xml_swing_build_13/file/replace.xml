@@ -1,0 +1,49 @@
+<manifest package="com.baidu.homework" android:versionCode="610" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="10.12.0_QA">
+  <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-feature android:name="android.hardware.camera.autofocus"/>
+  <permission android:name="com.baidu.homework.permission.PIC_SEARCH" android:description="@string/permission_search_description" android:icon="@mipmap/ic_launcher" android:label="@string/permission_search_label" android:protectionLevel="normal"/>
+  <uses-permission android:name="com.baidu.homework.permission.ACCOUNT_READ"/>
+  <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+  <application android:name=".base.ProxyApplication" android:allowBackup="false" android:hardwareAccelerated="true" android:icon="@drawable/ic_launcher" android:label="@string/app_name" android:largeHeap="true" android:networkSecurityConfig="@xml/network_security_config" android:persistent="true" android:supportsRtl="false" android:theme="@style/AppTheme" tools:replace="android:supportsRtl" xmlns:tools="http://schemas.android.com/tools">
+    <meta-data android:name="notch.config" android:value="portrait|landscape"/>
+    <activity android:name="com.baidu.mobads.AppActivity" android:configChanges="keyboard|keyboardHidden|orientation" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    <activity android:name=".activity.init.InitActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:theme="@style/Theme.AppStartLoad">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:host="com.baidu.homework" android:scheme="askhomework"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <category android:name="android.intent.category.BROWSABLE"/>
+        <data android:host="com.baidu.homework" android:path="/home" android:scheme="homework"/>
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:host="com.baidu.homework" android:scheme="launchHomework"/>
+      </intent-filter>
+    </activity>
+    <provider android:name="android.support.v4.content.FileProvider" android:authorities="${applicationId}.fileprovider" android:exported="false" android:grantUriPermissions="true">
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/bdp_update_filepaths"/>
+    </provider>
+    <receiver android:name=".MeizuPushReceiver">
+      <intent-filter>
+        <action android:name="com.meizu.flyme.push.intent.MESSAGE"/>
+        <action android:name="com.meizu.flyme.push.intent.REGISTER.FEEDBACK"/>
+        <action android:name="com.meizu.flyme.push.intent.UNREGISTER.FEEDBACK"/>
+        <action android:name="com.meizu.c2dm.intent.REGISTRATION"/>
+        <action android:name="com.meizu.c2dm.intent.RECEIVE"/>
+        <category android:name="${applicationId}"/>
+      </intent-filter>
+    </receiver>
+    <meta-data android:name="a" android:value="b" android:hh="h"/>
+  </application>
+</manifest>

@@ -19,11 +19,14 @@ import org.codehaus.groovy.transform.GroovyASTTransformation
  *   2、打包,生成 test.jar   jar -cf test.jar -C classes . -C resources .
  *   3、执行，               groovy -classpath test.jar Test.groovy
  */
+
+
+//在编译的时候，会保存相关类的信息
 @GroovyASTTransformation
 class MyASTTransformation implements ASTTransformation{
 /**
  *
- * @param astNodes ast抽象语法树节点
+ * @param astNodes ast抽象语法树节点   ModuleNode 数组
  * @param sourceUnit 源单元
  */
     @Override

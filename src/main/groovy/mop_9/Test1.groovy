@@ -52,18 +52,23 @@ class Persons implements GroovyInterceptable{
 
 //1、普通调用方法
 def p = new Persons(name:'liu')
-p.dream()   //调用方法
+//普通调用方法
+p.dream()
+//通过invokeMethod调用
 p.invokeMethod('dream',null)
+
 
 //2、原方法调用,先获取原方法，再进行调用
 MetaMethod method = p.metaClass.getMetaMethod('dream',null)
 method.invoke(p,null)
 
-//3、通过类对象去调用某个方法
+
+//3、通过类对象去调用某个方法， 会直接调用，不会被拦截
 p.metaClass.invokeMethod(p,'dream',null)
 
-//4、调用不存在的方法，也不会报错
-p.dream1()   //调用不存在的方法，也会进入invokeMethod拦截方法
+
+//4、调用不存在的方法，不会报错，也会进入invokeMethod拦截方法
+p.dream1()
 
 
 
